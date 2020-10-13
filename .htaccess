@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /
+
+
+# условие,  Если указанный url не файл и не директория
+# выполни правило для папки - 14_mysql_blog
+# [L,QSA] - последнее правило и передаем гет параметры
+RewriteCond %{REQUEST_URI} ^/14_mysql_blog
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*) 14_mysql_blog/index.php?url=$1 [L,QSA]

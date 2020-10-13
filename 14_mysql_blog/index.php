@@ -13,11 +13,38 @@
 		для этого создаем .htaccess (правила для веб сервера)
 
 
-36 минут   todo
+	---  Модель MVC ---
+		В url будем всегда писать имя контроллеара, после имя action   -  /controller/action/.
+		Контроллер - файлик, в нем action - функция, вызывается из файлика.
+
+		Есть 2-ой способ, папки - контроллеры, файлы - action-ы.
+
+		Задача контроллера сгрупировать, чтобы не было каши.
+
+		Одна точка входа - index.php . В ней делаем роутинг.
+
 
 
  */
 
-echo "<pre>";
-print_r($_GET);
-echo "</pre>";
+$_GET['url'] = str_replace('14_mysql_blog/', '', $_GET['url']);
+$url = $_GET['url'];
+$urlSegments = explode('/', $url);
+
+//по умолчанию
+$cntrName = (empty($urlSegments[0])) ? 'main' : $urlSegments[0];
+$actionName = (empty($urlSegments[1])) ? 'action_index' : 'action_' . $urlSegments[1];
+
+
+//подключаем контроллер и action
+if (file_exists('core/controllers/' . $cntrName . '.php')) {
+	require_once 'core/controllers/' . $cntrName . '.php';
+
+	if (function_exists($actionName)) {
+		$actionName();
+	} else {
+		echo '404 page';
+	}
+} else {
+	echo '404 page';
+}
