@@ -61,7 +61,7 @@ function action_registration()
 	}
 
 
-	renderView('registration', $errors);
+	renderView('registration', ['errors' => $errors]);
 }
 
 
@@ -100,29 +100,3 @@ function action_logout()
 	session_unset();
 	session_destroy();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

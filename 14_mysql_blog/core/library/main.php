@@ -8,7 +8,7 @@ function show404page()
 }
 
 
-function renderView($viewName, $formErrors = [])
+function renderView($viewName, array $data = [])
 {
 	include dirname(__DIR__) . '/views/' . $viewName . '.php';
 }
@@ -20,4 +20,14 @@ function is_auth()
 		return true;
 	}
 	return false;
+}
+
+
+function getUrlSegments($num)
+{
+	$_GET['url'] = str_replace('14_mysql_blog/', '', $_GET['url']);
+
+	$url = strtolower($_GET['url']);
+	$urlSegments = explode('/', $url);
+	return $urlSegments[$num];
 }

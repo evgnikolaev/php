@@ -10,9 +10,9 @@
 	<input type="password" name="password" placeholder="password">
 
 	<?
-	if ((isset($formErrors['login']))) {
+	if ((isset($data['errors']['login']))) {
 		echo '<pre>';
-		var_dump($formErrors);
+		var_dump($data['errors']);
 		echo '</pre>';
 	} ?>
 

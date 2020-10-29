@@ -32,7 +32,7 @@ function insertUpdateDelete($sql)
 	if (!$res) {
 		die(mysqli_errno($link) . ' --- ' . mysqli_error($link));
 	}
-	return $res;
+	return mysqli_insert_id($link);//вернем id результата, $res - возвращает кол-во записей.
 }
 
 
@@ -41,4 +41,11 @@ function getSaveData($str)
 	$link = connectToDb();
 	// все спецсимволы будут заэкранированы
 	return mysqli_escape_string($link, $str);
+}
+
+
+function getAll($table)
+{
+	$sql = "SELECT * FROM $table WHERE 1";
+	return mysqli_fetch_all(selectData($sql), MYSQLI_ASSOC);
 }
