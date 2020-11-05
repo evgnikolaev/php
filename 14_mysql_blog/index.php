@@ -15,6 +15,8 @@
 		к url вида         mysite/catalog/asd
 		для этого создаем .htaccess (правила для веб сервера)
 
+		 !!!!! www.site.com/контроллер/экшен/   !!!!!
+
 
 		Модель MVC
 		В url будем всегда писать имя контроллера, после имя action   -  /controller/action/.

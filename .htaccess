@@ -9,3 +9,9 @@ RewriteCond %{REQUEST_URI} ^/14_mysql_blog
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*) 14_mysql_blog/index.php?url=$1 [L,QSA]
+
+# для oop
+RewriteCond %{REQUEST_URI} ^/20_blog_oop
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*) 20_blog_oop/index.php?url=$1 [L,QSA]
